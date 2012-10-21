@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="#418bc6" >
+
+    <TextView
+        android:id="@+id/TextViewGrupo"
+        android:layout_width="fill_parent"
+        android:layout_height="69dp"
+        android:layout_marginLeft="35dp"
+        android:gravity="center_vertical"
+        android:textColor="#D1E4F1"
+        android:textSize="18dp"
+        android:textStyle="bold" >
+        
+		<!-- android:layout_height="100px" -->
+        <!-- android:layout_marginLeft="50px" -->
+    </TextView>
+
+</LinearLayout>

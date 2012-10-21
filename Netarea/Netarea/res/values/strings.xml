@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">Netarea</string>
+    <string name="user">Usuari</string>
+    <string name="hintUser">nom.cognom</string>
+    <string name="pass">Contrasenya</string>
+    <string name="hintPass">Contrasenya d\'Atenea</string>
+    <string name="login">Accedeix</string>
+    <string name="main_no_items">Encara no hi ha notes</string>
+    <string name="listView">Llistat de notes</string>
+    <string name="fetching">Obtenint les notes!</string>
+    <string name="webView">Estadístiques</string>
+    <string name="login_error">Contrasenya incorrecta</string>
+    <string name="btn_contact">Contacta</string>
+    <string name="btn_help">Ajuda</string>
+    <string name="log_in">Accedint al sistema</string>
+    <string name="no_marks">Assignatura sense qualificació</string>
+    <string name="fetching_statistics">Obtenint la gràfica</string>
+    <string name="help">Ajuda</string>
+    <string name="btn_update">Actualitzar</string>
+    <string name="help_text"><ol>
+            <li>L\'usuari i la contrasenya són els de Netarea</li>
+n\n            <li>Opcionalment podeu guardar les credencials</li>
+n\n            <li>Cada assignatura és pot desplegar, i hi trobareu les diferents notes</li>
+n\n            <li>Com en Netarea, les noves notes es marquen amb una bandera</li>
+n\n            <li>Per a veure les gràfiques de cada nota cliqueu sobre la desitjada</li>
+n\n            <li>Podeu actualitzar les notes amb el botó "Menú" d\'Android</li>
+        </ol></string>
+    <string name="contact">Contacta</string>
+    <string name="contact_text">Per a qualsevol dubte, suggeriment o bé per a informar d\'errors en l\'aplicació, dirigiu-vos a la següent direcció de correu\n\n
+        gerard.sole@grayditch.com</string>
+    <string name="no_internet">Connecta\'t a internet o revisa la xarxa</string>
+    <string name="sel_time">Selecciona un període</string>
+    <string name="autoCheckMarks">Comprovar automàticament noves notes?</string>
+    <string name="infoCheckMarks">Per a que això funcioni, tens que tenir activada la opció de guardar l\'usuari</string>
+    <string name="checkScheduling">Temps entre comprovacions de notes?</string>
+    <string name="save">Guardar</string>
+    <string name="cancel">Cancel·lar</string>
+    <string name="btn_config">Configuracions</string>
+    <string name="not_detail">Trobaràs una nova nota a la llista</string>
+    <string name="not_title">Netarea</string>
+    <string name="warning">Aquesta opció pot augmentar el consum de dades i bateria</string>
+    <string name="blank">Has d\'introduïr les dades</string>
+
+</resources>

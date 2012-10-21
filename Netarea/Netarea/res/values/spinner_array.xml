@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string-array name="animales">
+        <item>30 Minuts</item>
+        <item>1 Hora</item>
+        <item>1 H 30 Minuts</item>
+        <item>2 Hores</item>
+    </string-array>
+
+</resources>

@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<resources>
+	<color name="rowNormal">#D1E4F1</color>
+	<color name="rowPressed">#99CC99</color>
+</resources>
