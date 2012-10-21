@@ -70,6 +70,6 @@
         android:background="#FFFFFF"
         android:clickable="true"
         mode="live"
-        publisherId="9989df59adad0a2d99fbb59ddba35ec9" />
+        publisherId="" />
 
 </LinearLayout>
