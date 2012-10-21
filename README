@@ -1,0 +1,12 @@
+Aquesta aplicació dona una solució a la absència d’un programa mòbil per a veure les notes de Escola d'Enginyeria de Telecomunicació i Aeroespacial de Castelldefels (EETAC). Així doncs els alumnes podeu consultar les notes.
+
+Amb alertes de noves notes!
+
+Bàsicament es basa en un selector d'HTML per a obtenir les dades necessàries (Parsing d'HTML).
+_______________________
+
+Esta aplicación da una solución a la ausencia de un programa móvil para ver las notas de la “Escola d'Enginyeria de Telecomunicació i Aeroespacial de Castelldefels” (EETAC). Así pues los alumnos vais a poder consultar vuestras notas.
+
+Ahora con alertas de nuevas notas!
+
+Básicamente se basa en un selector HTML para obtener los datos necesarios (Parsing de HTML).
