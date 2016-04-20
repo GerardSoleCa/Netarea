@@ -25,11 +25,26 @@ public class QualificationsDataRepository implements QualificationsRepository {
     }
 
     @Override
-    public void getQualifications(UserDetails userDetails, final Callback callback) {
-        this.netareaClient.qualifications(userDetails, new NetareaClient.Callback() {
+    public void getQualifications(final UserDetails userDetails, final Callback callback) {
+
+        this.qualificationsDB.qualifications(new QualificationsDB.Callback() {
             @Override
             public void onSuccess(List<Subject> subjects) {
-                QualificationsDataRepository.this.storeQualifications(subjects, callback);
+                callback.onSuccess(subjects);
+                if(netareaClient.isNetworkAvailable()) {
+                    netareaClient.qualifications(userDetails, new NetareaClient.Callback() {
+                        @Override
+                        public void onSuccess(List<Subject> subjects) {
+                            callback.onSuccess(subjects);
+                            storeQualifications(subjects, callback);
+                        }
+
+                        @Override
+                        public void onError(Throwable e) {
+                            callback.onError(e);
+                        }
+                    });
+                }
             }
 
             @Override

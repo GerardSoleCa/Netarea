@@ -1,5 +1,7 @@
 package com.grayditch.netarea.data.network;
 
+import android.net.ConnectivityManager;
+
 import com.grayditch.netarea.domain.Subject;
 import com.grayditch.netarea.domain.UserDetails;
 
@@ -23,11 +25,13 @@ public class NetareaClient {
 
     private final OkHttpClient client;
     private final NetareaPageParser netareaPageParser;
+    private final NetworkUtils networkUtils;
 
     @Inject
-    public NetareaClient(OkHttpClient client, NetareaPageParser netareaPageParser) {
+    public NetareaClient(OkHttpClient client, NetareaPageParser netareaPageParser, NetworkUtils networkUtils) {
         this.client = client;
         this.netareaPageParser = netareaPageParser;
+        this.networkUtils = networkUtils;
     }
 
     public void qualifications(UserDetails userDetails, Callback callback) {
@@ -64,6 +68,10 @@ public class NetareaClient {
         } catch (IOException e) {
             callback.onError(e);
         }
+    }
+
+    public boolean isNetworkAvailable() {
+        return networkUtils.isNetworkAvailable();
     }
 
     public interface Callback {
