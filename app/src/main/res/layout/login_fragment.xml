@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/windowBackground"
+    tools:context=".presentation.activities.MainActivity">
+
+
+
+
+    <LinearLayout
+        android:layout_marginTop="50dp"
+        android:id="@+id/linearLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <ImageView
+            android:id="@+id/imageView"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_gravity="center_horizontal"
+            android:src="@drawable/eetac_logo"
+            android:layout_marginBottom="50dp"/>
+
+        <EditText
+            android:id="@+id/username_edittext"
+            style="@style/AppTheme.EditText.Style"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/username"
+            android:maxLines="1" />
+
+
+        <EditText
+            android:id="@+id/password_edittext"
+            style="@style/AppTheme.EditText.Style"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/password"
+            android:inputType="textPassword"
+            android:typeface="normal"
+            android:maxLines="1" />
+
+
+        <!--<CheckBox-->
+        <!--android:id="@+id/save_credentials_checkbox"-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:layout_gravity="center_horizontal"-->
+        <!--android:text="@string/save_user" />-->
+
+        <Button
+            android:id="@+id/login_button"
+            style="@style/AppTheme.Button.Style"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/login" />
+    </LinearLayout>
+
+</RelativeLayout>
