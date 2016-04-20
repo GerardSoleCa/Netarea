@@ -1,8 +1,7 @@
 package com.grayditch.netarea.presentation.activities.qualifications;
 
 import com.grayditch.netarea.domain.Subject;
-import com.grayditch.netarea.domain.UserDetails;
-import com.grayditch.netarea.domain.interactor.GetQualificationsUseCase;
+import com.grayditch.netarea.domain.interactor.interfaces.GetQualificationsUseCase;
 
 import java.util.List;
 

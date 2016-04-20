@@ -2,12 +2,12 @@ package com.grayditch.netarea.presentation.internal.di.modules;
 
 import com.grayditch.netarea.domain.executor.PostExecutionThread;
 import com.grayditch.netarea.domain.executor.ThreadExecutor;
-import com.grayditch.netarea.domain.interactor.CheckAuthenticatedUseCase;
 import com.grayditch.netarea.domain.interactor.CheckAuthenticatedUseCaseImpl;
-import com.grayditch.netarea.domain.interactor.GetQualificationsUseCase;
 import com.grayditch.netarea.domain.interactor.GetQualificationsUseCaseImpl;
-import com.grayditch.netarea.domain.interactor.LoginUseCase;
 import com.grayditch.netarea.domain.interactor.LoginUseCaseImpl;
+import com.grayditch.netarea.domain.interactor.interfaces.CheckAuthenticatedUseCase;
+import com.grayditch.netarea.domain.interactor.interfaces.GetQualificationsUseCase;
+import com.grayditch.netarea.domain.interactor.interfaces.LoginUseCase;
 import com.grayditch.netarea.domain.repository.QualificationsRepository;
 import com.grayditch.netarea.domain.repository.UserRepository;
 

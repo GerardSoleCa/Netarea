@@ -1,7 +1,7 @@
 package com.grayditch.netarea.presentation.activities.login;
 
 import com.grayditch.netarea.domain.UserDetails;
-import com.grayditch.netarea.domain.interactor.LoginUseCase;
+import com.grayditch.netarea.domain.interactor.interfaces.LoginUseCase;
 
 import javax.inject.Inject;
 

@@ -7,7 +7,7 @@ import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
 
 import com.grayditch.netarea.R;
-import com.grayditch.netarea.domain.interactor.CheckAuthenticatedUseCase;
+import com.grayditch.netarea.domain.interactor.interfaces.CheckAuthenticatedUseCase;
 import com.grayditch.netarea.presentation.App;
 import com.grayditch.netarea.presentation.activities.login.LoginFragment;
 import com.grayditch.netarea.presentation.activities.qualifications.QualificationsFragment;

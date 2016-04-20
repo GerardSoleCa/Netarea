@@ -24,12 +24,13 @@ public class NetareaPageParser {
     private static final String COLUMN = "td";
 
     @Inject
-    public NetareaPageParser(){
+    public NetareaPageParser() {
 
     }
 
     /**
      * Parse the Netarea Marks page into a List<SubjectDAO>
+     *
      * @param page
      * @return
      */
@@ -41,6 +42,7 @@ public class NetareaPageParser {
 
     /**
      * Get the qualifications table from a given HTML
+     *
      * @param document
      * @return
      */
@@ -51,11 +53,12 @@ public class NetareaPageParser {
                 return element.select("table");
             }
         }
-        return new Elements();
+        return null;
     }
 
     /**
      * Get subjects and marks from a given table
+     *
      * @param qualificationsDOM
      * @return
      */
@@ -72,6 +75,7 @@ public class NetareaPageParser {
 
     /**
      * Get a list of marks from a given set of rows
+     *
      * @param subjectName
      * @param row
      * @return
@@ -92,6 +96,7 @@ public class NetareaPageParser {
 
     /**
      * Get Marks from a given set of columns
+     *
      * @param td
      * @return
      */

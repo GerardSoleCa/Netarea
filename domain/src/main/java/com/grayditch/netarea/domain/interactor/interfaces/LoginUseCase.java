@@ -1,4 +1,4 @@
-package com.grayditch.netarea.domain.interactor;
+package com.grayditch.netarea.domain.interactor.interfaces;
 
 import com.grayditch.netarea.domain.UserDetails;
 

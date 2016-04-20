@@ -1,4 +1,4 @@
-package com.grayditch.netarea.domain.interactor;
+package com.grayditch.netarea.domain.interactor.interfaces;
 
 /**
  * Created by gerard on 18/04/16.

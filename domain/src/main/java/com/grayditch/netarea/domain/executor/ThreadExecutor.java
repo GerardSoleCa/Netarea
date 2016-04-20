@@ -15,7 +15,8 @@
  */
 package com.grayditch.netarea.domain.executor;
 
-import com.grayditch.netarea.domain.interactor.Interactor;
+
+import com.grayditch.netarea.domain.interactor.interfaces.Interactor;
 
 /**
  * Executor implementation can be based on different frameworks or techniques of asynchronous

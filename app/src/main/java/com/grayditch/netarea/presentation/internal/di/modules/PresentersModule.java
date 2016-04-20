@@ -1,8 +1,8 @@
 package com.grayditch.netarea.presentation.internal.di.modules;
 
 import com.grayditch.netarea.domain.UserDetails;
-import com.grayditch.netarea.domain.interactor.GetQualificationsUseCase;
-import com.grayditch.netarea.domain.interactor.LoginUseCase;
+import com.grayditch.netarea.domain.interactor.interfaces.GetQualificationsUseCase;
+import com.grayditch.netarea.domain.interactor.interfaces.LoginUseCase;
 import com.grayditch.netarea.presentation.activities.login.LoginPresenter;
 import com.grayditch.netarea.presentation.activities.login.LoginPresenterImpl;
 import com.grayditch.netarea.presentation.activities.qualifications.QualificationsPresenter;

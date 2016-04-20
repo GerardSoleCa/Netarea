@@ -8,20 +8,18 @@ import java.util.List;
 
 import javax.inject.Inject;
 
-import okhttp3.Call;
 import okhttp3.FormBody;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
 import okhttp3.RequestBody;
 import okhttp3.Response;
-import rx.Observable;
-import rx.Subscriber;
 
 /**
  * Created by gerard on 9/04/16.
  */
 public class NetareaClient {
     private static final String NETAREA_URL = "https://mitra.upc.es/SIA/ACCES_PERFIL.AUTENTIFICAR2";
+    private static final CharSequence LOGOUT_OPTION = "Surt / Campus Digital";
 
     private final OkHttpClient client;
     private final NetareaPageParser netareaPageParser;
@@ -56,11 +54,12 @@ public class NetareaClient {
     private void executeRequest(final Request request, final Callback callback) {
         try {
             Response response = client.newCall(request).execute();
-            if (response.isSuccessful()) {
-                List<Subject> subjects = netareaPageParser.parse(response.body().string());
+            String body = response.body().string();
+            if (body.contains(LOGOUT_OPTION)) {
+                List<Subject> subjects = netareaPageParser.parse(body);
                 callback.onSuccess(subjects);
             } else {
-                callback.onError(new Exception(Integer.toString(response.code())));
+                callback.onError(new Exception("Login was not successful"));
             }
         } catch (IOException e) {
             callback.onError(e);
