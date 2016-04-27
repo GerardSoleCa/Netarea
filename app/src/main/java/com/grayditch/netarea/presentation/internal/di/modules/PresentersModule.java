@@ -1,12 +1,11 @@
 package com.grayditch.netarea.presentation.internal.di.modules;
 
-import com.grayditch.netarea.domain.UserDetails;
 import com.grayditch.netarea.domain.interactor.interfaces.GetQualificationsUseCase;
 import com.grayditch.netarea.domain.interactor.interfaces.LoginUseCase;
-import com.grayditch.netarea.presentation.activities.login.LoginPresenter;
-import com.grayditch.netarea.presentation.activities.login.LoginPresenterImpl;
-import com.grayditch.netarea.presentation.activities.qualifications.QualificationsPresenter;
-import com.grayditch.netarea.presentation.activities.qualifications.QualificationsPresenterImpl;
+import com.grayditch.netarea.presentation.views.mainactivity.fragments.login.LoginPresenter;
+import com.grayditch.netarea.presentation.views.mainactivity.fragments.login.LoginPresenterImpl;
+import com.grayditch.netarea.presentation.views.mainactivity.fragments.qualifications.QualificationsPresenter;
+import com.grayditch.netarea.presentation.views.mainactivity.fragments.qualifications.QualificationsPresenterImpl;
 
 import javax.inject.Singleton;
 

@@ -1,18 +1,22 @@
-package com.grayditch.netarea.presentation.activities.qualifications;
+package com.grayditch.netarea.presentation.views.mainactivity.fragments.qualifications;
 
+import android.content.Context;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 
 import com.grayditch.netarea.R;
 import com.grayditch.netarea.domain.Subject;
 import com.grayditch.netarea.presentation.App;
-import com.grayditch.netarea.presentation.activities.qualifications.adapter.SubjectAdapter;
+import com.grayditch.netarea.presentation.views.mainactivity.fragments.qualifications.adapter.SubjectAdapter;
 
 import java.util.List;
 
@@ -29,6 +33,10 @@ public class QualificationsFragment extends Fragment implements QualificationsVi
 
     @Bind(R.id.subjects_recyclerview)
     RecyclerView recyclerView;
+
+
+    private OnQualificationsInteractionListener mListener;
+
     private RecyclerView.Adapter adapter;
     private RecyclerView.LayoutManager layoutManager;
 
@@ -43,6 +51,7 @@ public class QualificationsFragment extends Fragment implements QualificationsVi
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         App.component(getContext()).inject(this);
+        setHasOptionsMenu(true);
         this.presenter.onCreate(this);
     }
 
@@ -65,6 +74,23 @@ public class QualificationsFragment extends Fragment implements QualificationsVi
     }
 
     @Override
+    public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
+        super.onCreateOptionsMenu(menu, inflater);
+        inflater.inflate(R.menu.qualifications_menu, menu);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case R.id.open_settings:
+                this.mListener.onShowSettings();
+                return true;
+            default:
+                return false;
+        }
+    }
+
+    @Override
     public void onDestroy() {
         super.onDestroy();
         this.presenter.onDestroy();
@@ -72,7 +98,28 @@ public class QualificationsFragment extends Fragment implements QualificationsVi
     }
 
     @Override
+    public void onAttach(Context context) {
+        super.onAttach(context);
+        try {
+            mListener = (OnQualificationsInteractionListener) context;
+        } catch (ClassCastException e) {
+            throw new ClassCastException(context.toString()
+                    + " must implement OnFragmentInteractionListener");
+        }
+    }
+
+    @Override
+    public void onDetach() {
+        super.onDetach();
+        this.mListener = null;
+    }
+
+    @Override
     public void showQualifications(List<Subject> subjectList) {
         this.recyclerView.setAdapter(new SubjectAdapter(subjectList));
+    }
+
+    public interface OnQualificationsInteractionListener {
+        void onShowSettings();
     }
 }

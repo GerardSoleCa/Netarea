@@ -1,4 +1,4 @@
-package com.grayditch.netarea.presentation.activities.login;
+package com.grayditch.netarea.presentation.views.mainactivity.fragments.login;
 
 import com.grayditch.netarea.domain.UserDetails;
 import com.grayditch.netarea.domain.interactor.interfaces.LoginUseCase;

@@ -14,7 +14,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
-            android:name=".presentation.activities.SplashActivity"
+            android:name=".presentation.views.spashactivity.SplashActivity"
             android:theme="@style/SplashTheme">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -24,23 +24,28 @@
         </activity>
 
         <activity
-            android:name=".presentation.activities.MainActivity"
+            android:name=".presentation.views.mainactivity.activity.MainActivity"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="adjustPan">
             <!--<intent-filter>-->
-                <!--<action android:name="android.intent.action.MAIN" />-->
+            <!--<action android:name="android.intent.action.MAIN" />-->
 
-                <!--<category android:name="android.intent.category.LAUNCHER" />-->
+            <!--<category android:name="android.intent.category.LAUNCHER" />-->
             <!--</intent-filter>-->
         </activity>
 
         <!-- Will not be called unless the application explicitly enables it -->
-        <receiver android:name=".presentation.services.BootReceiver"
+        <receiver
+            android:name=".presentation.receivers.BootReceiver"
             android:enabled="false">
             <intent-filter>
-                <action android:name="android.intent.action.BOOT_COMPLETED"/>
+                <action android:name="android.intent.action.BOOT_COMPLETED" />
             </intent-filter>
         </receiver>
+
+        <receiver
+            android:name=".presentation.receivers.ScheduledQualificationsReceiver"
+            android:enabled="false"></receiver>
     </application>
 
 </manifest>

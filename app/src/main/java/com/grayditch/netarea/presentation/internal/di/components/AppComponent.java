@@ -15,9 +15,9 @@
  */
 package com.grayditch.netarea.presentation.internal.di.components;
 
-import com.grayditch.netarea.presentation.activities.MainActivity;
-import com.grayditch.netarea.presentation.activities.login.LoginFragment;
-import com.grayditch.netarea.presentation.activities.qualifications.QualificationsFragment;
+import com.grayditch.netarea.presentation.views.mainactivity.activity.MainActivity;
+import com.grayditch.netarea.presentation.views.mainactivity.fragments.login.LoginFragment;
+import com.grayditch.netarea.presentation.views.mainactivity.fragments.qualifications.QualificationsFragment;
 import com.grayditch.netarea.presentation.internal.di.modules.AppModule;
 import com.grayditch.netarea.presentation.internal.di.modules.DBModule;
 import com.grayditch.netarea.presentation.internal.di.modules.DependenciesModule;

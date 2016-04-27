@@ -1,4 +1,4 @@
-package com.grayditch.netarea.presentation.activities.login;
+package com.grayditch.netarea.presentation.views.mainactivity.fragments.login;
 
 import android.app.ProgressDialog;
 import android.content.Context;
@@ -10,7 +10,6 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.CheckBox;
 import android.widget.EditText;
 
 import com.grayditch.netarea.R;
@@ -85,7 +84,7 @@ public class LoginFragment extends Fragment implements LoginView {
 
     @Override
     public void navigateToQualifications() {
-        mListener.OnLoginFinished();
+        mListener.onLoginFinished();
     }
 
 
@@ -123,6 +122,6 @@ public class LoginFragment extends Fragment implements LoginView {
     }
 
     public interface OnLoginInteractionListener {
-        void OnLoginFinished();
+        void onLoginFinished();
     }
 }

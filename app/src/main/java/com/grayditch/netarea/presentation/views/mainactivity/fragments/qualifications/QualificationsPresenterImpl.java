@@ -1,4 +1,4 @@
-package com.grayditch.netarea.presentation.activities.qualifications;
+package com.grayditch.netarea.presentation.views.mainactivity.fragments.qualifications;
 
 import com.grayditch.netarea.domain.Subject;
 import com.grayditch.netarea.domain.interactor.interfaces.GetQualificationsUseCase;

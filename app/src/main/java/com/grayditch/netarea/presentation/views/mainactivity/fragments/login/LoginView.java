@@ -1,4 +1,4 @@
-package com.grayditch.netarea.presentation.activities.login;
+package com.grayditch.netarea.presentation.views.mainactivity.fragments.login;
 
 /**
  * Created by gerard on 9/04/16.

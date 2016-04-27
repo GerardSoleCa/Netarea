@@ -1,8 +1,11 @@
 package com.grayditch.netarea.presentation.internal.di.modules;
 
+import android.content.Context;
+
 import com.grayditch.netarea.data.network.CookieStore;
 import com.grayditch.netarea.data.network.NetareaClient;
 import com.grayditch.netarea.data.network.NetareaPageParser;
+import com.grayditch.netarea.data.network.NetworkUtils;
 import com.grayditch.netarea.data.network.PreferredCipherSuiteSSLSocketFactory;
 import com.grayditch.netarea.domain.repository.QualificationsRepository;
 
@@ -73,7 +76,13 @@ public class NetworkModule {
 
     @Provides
     @Singleton
-    NetareaClient provideNetareaClient(OkHttpClient okHttpClient, NetareaPageParser netareaPageParser) {
-        return new NetareaClient(okHttpClient, netareaPageParser);
+    NetworkUtils provideNetworkUtils(Context context) {
+        return new NetworkUtils(context);
+    }
+
+    @Provides
+    @Singleton
+    NetareaClient provideNetareaClient(OkHttpClient okHttpClient, NetareaPageParser netareaPageParser, NetworkUtils networkUtils) {
+        return new NetareaClient(okHttpClient, netareaPageParser, networkUtils);
     }
 }
