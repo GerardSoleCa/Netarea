@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
 
-    <PreferenceCategory android:title="Configuración">
+    <PreferenceCategory android:title="Configuración"
+        >
 
         <ListPreference
             android:entries="@array/background_fetch_intervals"
@@ -15,11 +16,12 @@
     <PreferenceCategory android:title="Usuario">
 
         <Preference
-            android:selectable="false"
             android:enabled="true"
             android:key="example_key"
-            android:title="Salir"
-            android:summary="Cerrar la sessión y borrar los datos" />
+            android:selectable="false"
+            android:summary="Cerrar la sessión y borrar los datos"
+
+            android:title="Salir" />
 
     </PreferenceCategory>
 
