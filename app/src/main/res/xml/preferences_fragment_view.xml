@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+<PreferenceScreen xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android">
 
     <PreferenceCategory android:title="Configuración">
 
@@ -7,8 +8,8 @@
             android:entries="@array/background_fetch_intervals"
             android:entryValues="@array/background_fetch_intervals"
             android:key="backgroundQualificationsPref"
-            android:summary="Comprobar notas en segundo plano"
-            android:title="Segundo plano" />
+            android:summary="%s"
+            android:title="Notificaciones de notas" />
 
     </PreferenceCategory>
 
@@ -19,7 +20,8 @@
             android:enabled="true"
             android:key="example_key"
             android:title="Salir"
-            android:summary="Cerrar la sessión y borrar los datos" />
+            android:summary="Cerrar sessión"
+            app:selectable="false" />
 
     </PreferenceCategory>
 
