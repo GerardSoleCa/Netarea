@@ -7,6 +7,7 @@ import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -44,6 +45,17 @@ public class LoginFragment extends Fragment implements LoginView {
         return new LoginFragment();
     }
 
+    @Override
+    public void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        App.component(getContext()).inject(this);
+        ActionBar actionBar = ((AppCompatActivity) getActivity()).getSupportActionBar();
+        if (actionBar != null) {
+            actionBar.hide();
+        }
+        this.presenter.onCreate(this);
+    }
+
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -53,20 +65,9 @@ public class LoginFragment extends Fragment implements LoginView {
     }
 
     @Override
-    public void onCreate(@Nullable Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        App.component(getContext()).inject(this);
-        ActionBar actionBar = ((AppCompatActivity)getActivity()).getSupportActionBar();
-        if (actionBar != null) {
-            actionBar.hide();
-        }
-        this.presenter.onCreate(this);
-    }
-
-    @Override
     public void onDestroy() {
-        super.onDestroy();
         ButterKnife.unbind(this);
+        super.onDestroy();
     }
 
     @Override
@@ -90,13 +91,14 @@ public class LoginFragment extends Fragment implements LoginView {
 
     @OnClick(R.id.login_button)
     public void onClick() {
+        Log.v("LoginFragment", "On Click Login");
         presenter.login(username.getText().toString(), password.getText().toString());
     }
 
     @Override
     public void onDestroyView() {
-        super.onDestroyView();
         presenter.onDestroy();
+        super.onDestroyView();
     }
 
     @Override
@@ -105,20 +107,15 @@ public class LoginFragment extends Fragment implements LoginView {
         try {
             mListener = (OnLoginInteractionListener) context;
         } catch (ClassCastException e) {
-            throw new ClassCastException(context.toString()
-                    + " must implement OnFragmentInteractionListener");
+            throw new ClassCastException(context.toString() + " must implement OnFragmentInteractionListener");
         }
     }
 
 
     @Override
     public void onDetach() {
-        super.onDetach();
         mListener = null;
-        ActionBar actionBar = ((AppCompatActivity)getActivity()).getSupportActionBar();
-        if (actionBar != null) {
-            actionBar.show();
-        }
+        super.onDetach();
     }
 
     public interface OnLoginInteractionListener {

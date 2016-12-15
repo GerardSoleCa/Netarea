@@ -26,15 +26,15 @@ public class Mark {
     }
 
     public boolean isNew() {
-        return isNew;
+        return this.isNew;
     }
 
-    public void setNew(boolean aNew) {
-        isNew = aNew;
+    public void setNew(boolean isNew) {
+        this.isNew = isNew;
     }
 
     public String getDescription() {
-        return description;
+        return this.description;
     }
 
     public void setDescription(String description) {
@@ -42,7 +42,7 @@ public class Mark {
     }
 
     public String getPercentage() {
-        return percentage;
+        return this.percentage;
     }
 
     public void setPercentage(String percentage) {
@@ -50,7 +50,7 @@ public class Mark {
     }
 
     public String getMark() {
-        return mark;
+        return this.mark;
     }
 
     public void setMark(String mark) {

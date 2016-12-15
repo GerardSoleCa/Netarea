@@ -69,17 +69,7 @@ public class LoginUseCaseImpl implements LoginUseCase {
         this.postExecutionThread.post(new Runnable() {
             @Override
             public void run() {
-                LoginUseCaseImpl.this.userRepository.storeUserDetails(userDetails, new UserRepository.Callback() {
-                    @Override
-                    public void onSuccess(UserDetails userDetails) {
-
-                    }
-
-                    @Override
-                    public void onError(Throwable e) {
-
-                    }
-                });
+                LoginUseCaseImpl.this.userRepository.storeUserDetails(userDetails);
                 callback.onSuccess();
             }
         });

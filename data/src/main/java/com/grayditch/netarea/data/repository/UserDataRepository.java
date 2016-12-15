@@ -33,8 +33,9 @@ public class UserDataRepository implements UserRepository {
     }
 
     @Override
-    public void storeUserDetails(UserDetails userDetails, Callback callback) {
-        this.storeMode().putString(USERNAME, userDetails.getUsername())
+    public void storeUserDetails(UserDetails userDetails) {
+        this.storeMode()
+                .putString(USERNAME, userDetails.getUsername())
                 .putString(PASSWORD, userDetails.getPassword())
                 .apply();
     }

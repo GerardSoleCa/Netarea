@@ -13,11 +13,11 @@ import rx.Observable;
 public interface UserRepository {
     void getUserDetails(Callback callback);
 
-    void storeUserDetails(UserDetails userDetails, Callback callback);
+    void storeUserDetails(UserDetails userDetails);
 
     boolean isAuthenticated();
 
-    public interface Callback {
+    interface Callback {
         void onSuccess(UserDetails userDetails);
 
         void onError(Throwable e);

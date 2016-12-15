@@ -4,6 +4,8 @@ import android.content.Context;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.support.v7.app.ActionBar;
+import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -37,7 +39,6 @@ public class QualificationsFragment extends Fragment implements QualificationsVi
 
     private OnQualificationsInteractionListener mListener;
 
-    private RecyclerView.Adapter adapter;
     private RecyclerView.LayoutManager layoutManager;
 
     public QualificationsFragment() {
@@ -51,13 +52,17 @@ public class QualificationsFragment extends Fragment implements QualificationsVi
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         App.component(getContext()).inject(this);
+        ActionBar actionBar = ((AppCompatActivity) getActivity()).getSupportActionBar();
+        if (actionBar != null) {
+            actionBar.show();
+        }
         setHasOptionsMenu(true);
         this.presenter.onCreate(this);
     }
 
+    @Nullable
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
+    public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.qualifications_fragment, container, false);
         ButterKnife.bind(this, view);
@@ -75,8 +80,8 @@ public class QualificationsFragment extends Fragment implements QualificationsVi
 
     @Override
     public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
-        super.onCreateOptionsMenu(menu, inflater);
         inflater.inflate(R.menu.qualifications_menu, menu);
+        super.onCreateOptionsMenu(menu, inflater);
     }
 
     @Override
@@ -92,26 +97,26 @@ public class QualificationsFragment extends Fragment implements QualificationsVi
 
     @Override
     public void onDestroy() {
-        super.onDestroy();
         this.presenter.onDestroy();
         ButterKnife.unbind(this);
+        super.onDestroy();
     }
 
     @Override
     public void onAttach(Context context) {
-        super.onAttach(context);
         try {
             mListener = (OnQualificationsInteractionListener) context;
         } catch (ClassCastException e) {
             throw new ClassCastException(context.toString()
                     + " must implement OnFragmentInteractionListener");
         }
+        super.onAttach(context);
     }
 
     @Override
     public void onDetach() {
-        super.onDetach();
         this.mListener = null;
+        super.onDetach();
     }
 
     @Override

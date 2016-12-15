@@ -1,5 +1,7 @@
 package com.grayditch.netarea.presentation.views.mainactivity.fragments.login;
 
+import android.util.Log;
+
 import com.grayditch.netarea.domain.UserDetails;
 import com.grayditch.netarea.domain.interactor.interfaces.LoginUseCase;
 
@@ -44,18 +46,24 @@ public class LoginPresenterImpl implements LoginPresenter {
     private final LoginUseCase.Callback loginUseCaseCallback = new LoginUseCase.Callback() {
         @Override
         public void onSuccess() {
-            LoginView v = LoginPresenterImpl.this.view.get();
-            if (v != null) {
-                v.hideProgress();
-                v.navigateToQualifications();
+            // Two onSuccess due to the way that works the storaging for quick catching
+            if (LoginPresenterImpl.this.view != null) {
+                LoginView v = LoginPresenterImpl.this.view.get();
+                if (v != null) {
+                    v.hideProgress();
+                    v.navigateToQualifications();
+                }
             }
         }
 
         @Override
         public void onError(Throwable e) {
-            LoginView v = LoginPresenterImpl.this.view.get();
-            if (v != null) {
-                v.hideProgress();
+            // Two onSuccess due to the way that works the storaging for quick catching
+            if (LoginPresenterImpl.this.view != null) {
+                LoginView v = LoginPresenterImpl.this.view.get();
+                if (v != null) {
+                    v.hideProgress();
+                }
             }
         }
     };
