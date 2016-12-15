@@ -3,6 +3,8 @@ package com.grayditch.netarea.presentation.views.mainactivity.fragments.login;
 import com.grayditch.netarea.domain.UserDetails;
 import com.grayditch.netarea.domain.interactor.interfaces.LoginUseCase;
 
+import java.lang.ref.WeakReference;
+
 import javax.inject.Inject;
 
 /**
@@ -11,7 +13,7 @@ import javax.inject.Inject;
 public class LoginPresenterImpl implements LoginPresenter {
     private final LoginUseCase loginUseCase;
 
-    private LoginView view;
+    private WeakReference<LoginView> view;
 
     @Inject
     public LoginPresenterImpl(LoginUseCase loginUseCase) {
@@ -20,12 +22,14 @@ public class LoginPresenterImpl implements LoginPresenter {
 
     @Override
     public void onCreate(LoginView view) {
-        this.view = view;
+        this.view = new WeakReference<>(view);
     }
 
     @Override
     public void login(final String username, final String password) {
-        this.view.showProgress();
+        if (LoginPresenterImpl.this.view.get() != null) {
+            LoginPresenterImpl.this.view.get().showProgress();
+        }
         UserDetails userDetails = new UserDetails();
         userDetails.setUsername(username);
         userDetails.setPassword(password);
@@ -40,13 +44,19 @@ public class LoginPresenterImpl implements LoginPresenter {
     private final LoginUseCase.Callback loginUseCaseCallback = new LoginUseCase.Callback() {
         @Override
         public void onSuccess() {
-            LoginPresenterImpl.this.view.hideProgress();
-            LoginPresenterImpl.this.view.navigateToQualifications();
+            LoginView v = LoginPresenterImpl.this.view.get();
+            if (v != null) {
+                v.hideProgress();
+                v.navigateToQualifications();
+            }
         }
 
         @Override
         public void onError(Throwable e) {
-            LoginPresenterImpl.this.view.hideProgress();
+            LoginView v = LoginPresenterImpl.this.view.get();
+            if (v != null) {
+                v.hideProgress();
+            }
         }
     };
 

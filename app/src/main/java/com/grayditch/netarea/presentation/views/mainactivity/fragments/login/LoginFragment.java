@@ -56,11 +56,11 @@ public class LoginFragment extends Fragment implements LoginView {
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         App.component(getContext()).inject(this);
-        this.presenter.onCreate(this);
         ActionBar actionBar = ((AppCompatActivity)getActivity()).getSupportActionBar();
         if (actionBar != null) {
-           actionBar.hide();
+            actionBar.hide();
         }
+        this.presenter.onCreate(this);
     }
 
     @Override

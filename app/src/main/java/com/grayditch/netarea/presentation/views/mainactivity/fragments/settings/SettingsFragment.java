@@ -24,10 +24,7 @@ public class SettingsFragment extends PreferenceFragmentCompat implements Shared
     public void onCreatePreferences(Bundle bundle, String s) {
         //add xml
         addPreferencesFromResource(R.xml.preferences_fragment_view);
-
         sharedPreferences = PreferenceManager.getDefaultSharedPreferences(getActivity());
-
-//        onSharedPreferenceChanged(sharedPreferences, getString(R.string.movies_categories_key));
     }
 
 

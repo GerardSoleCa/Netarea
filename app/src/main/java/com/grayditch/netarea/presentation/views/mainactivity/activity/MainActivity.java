@@ -25,22 +25,17 @@ public class MainActivity extends AppCompatActivity implements LoginFragment.OnL
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         App.component(this).inject(this);
+        setContentView(R.layout.main_activity);
         this.checkAuthenticatedUseCase.execute(new CheckAuthenticatedUseCase.Callback() {
             @Override
-            public void onSuccess(Boolean isAuthenticated) {
+            public void isAuthenticated(boolean isAuthenticated) {
                 if (isAuthenticated) {
                     MainActivity.this.navigateToFragment(QualificationsFragment.newInstance());
                 } else {
                     MainActivity.this.navigateToFragment(LoginFragment.newInstance());
                 }
             }
-
-            @Override
-            public void onError(Throwable e) {
-                MainActivity.this.navigateToFragment(LoginFragment.newInstance());
-            }
         });
-        setContentView(R.layout.main_activity);
     }
 
     @Override
@@ -55,7 +50,7 @@ public class MainActivity extends AppCompatActivity implements LoginFragment.OnL
         ft.commit();
     }
 
-    private void showFragment(Fragment fragment){
+    private void showFragment(Fragment fragment) {
         FragmentManager fm = getSupportFragmentManager();
         FragmentTransaction ft = fm.beginTransaction();
         ft.replace(R.id.fragment_view, fragment);

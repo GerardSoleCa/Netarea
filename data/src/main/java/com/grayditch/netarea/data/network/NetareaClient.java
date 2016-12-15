@@ -21,7 +21,7 @@ import okhttp3.Response;
  */
 public class NetareaClient {
     private static final String NETAREA_URL = "https://mitra.upc.es/SIA/ACCES_PERFIL.AUTENTIFICAR2";
-    private static final CharSequence LOGOUT_OPTION = "Surt / Campus Digital";
+    private static final CharSequence LOGOUT_OPTION = "ACCES_PERFIL.SORTIR";
 
     private final OkHttpClient client;
     private final NetareaPageParser netareaPageParser;
@@ -42,7 +42,7 @@ public class NetareaClient {
 
     private RequestBody getRequestBody(String username, String password) {
         return new FormBody.Builder()
-                .add("v_procediment", "NETAREA.INICI")
+                .add("v_procediment", "MAPA_NOU.EXEC_P?w_codi_apl=4")
                 .add("v_username", username)
                 .add("v_password", password)
                 .build();

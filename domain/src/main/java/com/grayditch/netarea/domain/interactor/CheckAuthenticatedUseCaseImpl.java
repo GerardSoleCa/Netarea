@@ -1,14 +1,9 @@
 package com.grayditch.netarea.domain.interactor;
 
-import com.grayditch.netarea.domain.Subject;
-import com.grayditch.netarea.domain.UserDetails;
 import com.grayditch.netarea.domain.executor.PostExecutionThread;
 import com.grayditch.netarea.domain.executor.ThreadExecutor;
 import com.grayditch.netarea.domain.interactor.interfaces.CheckAuthenticatedUseCase;
-import com.grayditch.netarea.domain.repository.QualificationsRepository;
 import com.grayditch.netarea.domain.repository.UserRepository;
-
-import java.util.List;
 
 import javax.inject.Inject;
 
@@ -46,7 +41,7 @@ public class CheckAuthenticatedUseCaseImpl implements CheckAuthenticatedUseCase 
             @Override
             public void run() {
                 boolean isAuthenticated = CheckAuthenticatedUseCaseImpl.this.userRepository.isAuthenticated();
-                CheckAuthenticatedUseCaseImpl.this.callback.onSuccess(isAuthenticated);
+                CheckAuthenticatedUseCaseImpl.this.callback.isAuthenticated(isAuthenticated);
             }
         });
     }

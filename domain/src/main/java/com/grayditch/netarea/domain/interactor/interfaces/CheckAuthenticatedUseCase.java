@@ -10,7 +10,6 @@ public interface CheckAuthenticatedUseCase extends Interactor {
     void execute(Callback callback);
 
     interface Callback{
-        void onSuccess(Boolean isAuthenticated);
-        void onError(Throwable e);
+        void isAuthenticated(boolean isAuthenticated);
     }
 }
