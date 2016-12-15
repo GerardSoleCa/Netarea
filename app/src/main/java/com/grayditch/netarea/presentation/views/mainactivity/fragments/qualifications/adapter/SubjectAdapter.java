@@ -31,6 +31,7 @@ public class SubjectAdapter extends RecyclerView.Adapter<SubjectAdapter.ViewHold
     public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View v = LayoutInflater.from(parent.getContext())
                 .inflate(R.layout.subject_recycler_view, parent, false);
+
         return new ViewHolder(v, parent.getContext());
     }
 
@@ -62,4 +63,12 @@ public class SubjectAdapter extends RecyclerView.Adapter<SubjectAdapter.ViewHold
             this.recyclerView.setLayoutManager(this.layoutManager);
         }
     }
+
+
+    public void refreshSubjects(List<Subject> subjects) {
+        this.subjects.clear();
+        this.subjects.addAll(subjects);
+        notifyDataSetChanged();
+    }
+
 }

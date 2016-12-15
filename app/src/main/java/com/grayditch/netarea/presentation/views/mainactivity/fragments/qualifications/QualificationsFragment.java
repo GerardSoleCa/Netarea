@@ -4,6 +4,7 @@ import android.content.Context;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
@@ -20,6 +21,7 @@ import com.grayditch.netarea.domain.Subject;
 import com.grayditch.netarea.presentation.App;
 import com.grayditch.netarea.presentation.views.mainactivity.fragments.qualifications.adapter.SubjectAdapter;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.inject.Inject;
@@ -33,6 +35,10 @@ public class QualificationsFragment extends Fragment implements QualificationsVi
     @Inject
     QualificationsPresenter presenter;
 
+
+    @Bind(R.id.swipe_refresh_layout)
+    SwipeRefreshLayout swipeRefreshLayout;
+
     @Bind(R.id.subjects_recyclerview)
     RecyclerView recyclerView;
 
@@ -40,6 +46,8 @@ public class QualificationsFragment extends Fragment implements QualificationsVi
     private OnQualificationsInteractionListener mListener;
 
     private RecyclerView.LayoutManager layoutManager;
+
+    private SubjectAdapter subjectAdapter = new SubjectAdapter(new ArrayList<Subject>());
 
     public QualificationsFragment() {
     }
@@ -69,6 +77,8 @@ public class QualificationsFragment extends Fragment implements QualificationsVi
         this.recyclerView.setHasFixedSize(true);
         this.layoutManager = new LinearLayoutManager(getContext());
         this.recyclerView.setLayoutManager(this.layoutManager);
+        this.swipeRefreshLayout.setOnRefreshListener(swipeListener);
+        this.recyclerView.setAdapter(subjectAdapter);
         return view;
     }
 
@@ -121,10 +131,21 @@ public class QualificationsFragment extends Fragment implements QualificationsVi
 
     @Override
     public void showQualifications(List<Subject> subjectList) {
-        this.recyclerView.setAdapter(new SubjectAdapter(subjectList));
+        subjectAdapter.refreshSubjects(subjectList);
+        if (this.swipeRefreshLayout.isRefreshing()) {
+            this.swipeRefreshLayout.setRefreshing(false);
+        }
     }
 
     public interface OnQualificationsInteractionListener {
         void onShowSettings();
     }
+
+    private SwipeRefreshLayout.OnRefreshListener swipeListener = new SwipeRefreshLayout.OnRefreshListener() {
+
+        @Override
+        public void onRefresh() {
+            QualificationsFragment.this.presenter.fetchQualifications();
+        }
+    };
 }
