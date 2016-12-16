@@ -19,13 +19,6 @@ public class MarkDAO extends RealmObject {
 
     }
 
-    public MarkDAO(String description, boolean isNew, String mark, String percentage) {
-        this.description = description;
-        this.isNew = isNew;
-        this.mark = mark;
-        this.percentage = percentage;
-    }
-
     public void setId(String subject, String description) {
         this.id = subject + description;
     }
