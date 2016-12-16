@@ -13,9 +13,9 @@ import io.realm.RealmList;
 /**
  * Created by gerard on 20/04/16.
  */
-public class EntityMapper {
+class EntityMapper {
 
-    public static List<Subject> transform(List<SubjectDAO> subjectDAOs) {
+    static List<Subject> transform(List<SubjectDAO> subjectDAOs) {
         List<Subject> subjects = new ArrayList<>();
         for (SubjectDAO subjectDAO : subjectDAOs) {
             Subject subject = EntityMapper.transform(subjectDAO);
@@ -24,7 +24,7 @@ public class EntityMapper {
         return subjects;
     }
 
-    public static Subject transform(SubjectDAO subjectDAO) {
+    private static Subject transform(SubjectDAO subjectDAO) {
         List<MarkDAO> markDAOs = subjectDAO.getMarks();
         List<Mark> marks = new ArrayList<>();
         for (MarkDAO markDao : markDAOs) {
@@ -33,7 +33,7 @@ public class EntityMapper {
         return new Subject(subjectDAO.getName(), marks);
     }
 
-    public static Mark transform(MarkDAO markDAO){
+    private static Mark transform(MarkDAO markDAO) {
         Mark mark = new Mark();
         mark.setNew(markDAO.isNew());
         mark.setDescription(markDAO.getDescription());
@@ -42,26 +42,27 @@ public class EntityMapper {
         return mark;
     }
 
-    public static List<SubjectDAO> transformToDao(List<Subject> subjects) {
+    static List<SubjectDAO> transformToDao(List<Subject> subjects) {
         List<SubjectDAO> subjectDAOs = new ArrayList<>();
         for (Subject subject : subjects) {
-            SubjectDAO subjectDAO= EntityMapper.transformToDao(subject);
+            SubjectDAO subjectDAO = EntityMapper.transformSubjectToDao(subject);
             subjectDAOs.add(subjectDAO);
         }
         return subjectDAOs;
     }
 
-    public static SubjectDAO transformToDao(Subject subject){
+    private static SubjectDAO transformSubjectToDao(Subject subject) {
         List<Mark> marks = subject.getMarks();
         RealmList<MarkDAO> markDAOs = new RealmList<>();
         for (Mark mark : marks) {
-            markDAOs.add(EntityMapper.transformToDao(mark));
+            markDAOs.add(EntityMapper.transformMarkToDao(subject, mark));
         }
         return new SubjectDAO(subject.getName(), markDAOs);
     }
 
-    public static MarkDAO transformToDao(Mark mark){
+    private static MarkDAO transformMarkToDao(Subject subject, Mark mark) {
         MarkDAO markDAO = new MarkDAO();
+        markDAO.setId(subject.getName(), mark.getDescription());
         markDAO.setNew(mark.isNew());
         markDAO.setDescription(mark.getDescription());
         markDAO.setPercentage(mark.getPercentage());

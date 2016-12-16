@@ -2,6 +2,7 @@ package com.grayditch.netarea.data.database;
 
 import android.content.Context;
 
+import com.grayditch.netarea.data.database.dao.MarkDAO;
 import com.grayditch.netarea.data.database.dao.SubjectDAO;
 import com.grayditch.netarea.domain.Subject;
 
@@ -28,16 +29,19 @@ public class QualificationsDB {
         this.context = context;
         this.realmConfiguration = new RealmConfiguration.Builder(context)
                 .name(NETAREA)
+                .deleteRealmIfMigrationNeeded()
                 .build();
     }
 
     public void storeQualifications(List<Subject> subjects, Callback callback) {
+        this.clear(SubjectDAO.class);
+        this.clear(MarkDAO.class);
         this.save(EntityMapper.transformToDao(subjects));
         callback.onSuccess(subjects);
     }
 
     public void qualifications(Callback callback) {
-        List<SubjectDAO> subjectDAOs =  this.getAll(SubjectDAO.class);
+        List<SubjectDAO> subjectDAOs = this.getAll(SubjectDAO.class);
         callback.onSuccess(EntityMapper.transform(subjectDAOs));
     }
 
@@ -46,7 +50,7 @@ public class QualificationsDB {
     }
 
 
-    private  <T extends RealmObject> void save(List<T> t){
+    private <T extends RealmObject> void save(List<T> t) {
         Realm realm = this.openRealm();
         realm.beginTransaction();
         realm.copyToRealmOrUpdate(t);
@@ -54,12 +58,20 @@ public class QualificationsDB {
         realm.close();
     }
 
-    private<T extends RealmObject> List<T> getAll(Class<T> t){
+    private <T extends RealmObject> List<T> getAll(Class<T> t) {
         Realm realm = this.openRealm();
         RealmResults<T> subjectDAORealmResults = realm.where(t).findAll();
         List<T> list = realm.copyFromRealm(subjectDAORealmResults);
         realm.close();
         return list;
+    }
+
+    private <T extends RealmObject> void clear(Class<T> t) {
+        Realm realm = this.openRealm();
+        realm.beginTransaction();
+        realm.clear(t);
+        realm.commitTransaction();
+        realm.close();
     }
 
     public interface Callback {

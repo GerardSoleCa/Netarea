@@ -8,6 +8,8 @@ import io.realm.annotations.PrimaryKey;
  */
 public class MarkDAO extends RealmObject {
     @PrimaryKey
+    private String id;
+
     private String description;
     private boolean isNew;
     private String mark;
@@ -22,6 +24,10 @@ public class MarkDAO extends RealmObject {
         this.isNew = isNew;
         this.mark = mark;
         this.percentage = percentage;
+    }
+
+    public void setId(String subject, String description) {
+        this.id = subject + description;
     }
 
     public String getDescription() {
