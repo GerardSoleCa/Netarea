@@ -17,7 +17,7 @@ import com.grayditch.netarea.presentation.views.mainactivity.fragments.settings.
 import javax.inject.Inject;
 
 
-public class MainActivity extends AppCompatActivity implements LoginFragment.OnLoginInteractionListener, QualificationsFragment.OnQualificationsInteractionListener {
+public class MainActivity extends AppCompatActivity implements LoginFragment.OnLoginInteractionListener, QualificationsFragment.OnQualificationsInteractionListener, SettingsFragment.OnSettingsInteractionListener {
 
     @Inject
     CheckAuthenticatedUseCase checkAuthenticatedUseCase;
@@ -69,5 +69,10 @@ public class MainActivity extends AppCompatActivity implements LoginFragment.OnL
     @Override
     public void onShowSettings() {
         this.showFragment(SettingsFragment.newInstance());
+    }
+
+    @Override
+    public void onLogout() {
+        this.showFragment(LoginFragment.newInstance());
     }
 }

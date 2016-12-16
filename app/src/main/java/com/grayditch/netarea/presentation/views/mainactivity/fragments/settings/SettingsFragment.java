@@ -1,5 +1,6 @@
 package com.grayditch.netarea.presentation.views.mainactivity.fragments.settings;
 
+import android.content.Context;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.preference.PreferenceFragment;
@@ -9,6 +10,7 @@ import android.support.v7.preference.PreferenceManager;
 
 import com.grayditch.netarea.R;
 import com.grayditch.netarea.presentation.views.mainactivity.activity.MainActivity;
+import com.grayditch.netarea.presentation.views.mainactivity.fragments.login.LoginFragment;
 
 import butterknife.OnClick;
 
@@ -18,6 +20,9 @@ import butterknife.OnClick;
 public class SettingsFragment extends PreferenceFragmentCompat implements SharedPreferences.OnSharedPreferenceChangeListener {
 
     private SharedPreferences sharedPreferences;
+
+
+    private OnSettingsInteractionListener mListener;
 
     public static SettingsFragment newInstance() {
         return new SettingsFragment();
@@ -33,13 +38,13 @@ public class SettingsFragment extends PreferenceFragmentCompat implements Shared
         addListeners();
     }
 
-    public void addListeners(){
-        Preference reset = (Preference) findPreference("logout");
+    public void addListeners() {
+        Preference reset = findPreference("logout");
         reset.setOnPreferenceClickListener(new Preference.OnPreferenceClickListener() {
             @Override
             public boolean onPreferenceClick(Preference preference) {
                 sharedPreferences.edit().clear().apply();
-                ( (MainActivity)getActivity())
+                mListener.onLogout();
                 return true;
             }
         });
@@ -67,4 +72,17 @@ public class SettingsFragment extends PreferenceFragmentCompat implements Shared
                 .unregisterOnSharedPreferenceChangeListener(this);
     }
 
+    @Override
+    public void onAttach(Context context) {
+        super.onAttach(context);
+        try {
+            mListener = (OnSettingsInteractionListener) context;
+        } catch (ClassCastException e) {
+            throw new ClassCastException(context.toString() + " must implement OnSettingsInteractionListener");
+        }
+    }
+
+    public interface OnSettingsInteractionListener {
+        void onLogout();
+    }
 }

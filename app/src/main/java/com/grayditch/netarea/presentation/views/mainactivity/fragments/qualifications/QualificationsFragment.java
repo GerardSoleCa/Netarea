@@ -137,15 +137,14 @@ public class QualificationsFragment extends Fragment implements QualificationsVi
         }
     }
 
-    public interface OnQualificationsInteractionListener {
-        void onShowSettings();
-    }
-
     private SwipeRefreshLayout.OnRefreshListener swipeListener = new SwipeRefreshLayout.OnRefreshListener() {
-
         @Override
         public void onRefresh() {
             QualificationsFragment.this.presenter.fetchQualifications();
         }
     };
+
+    public interface OnQualificationsInteractionListener {
+        void onShowSettings();
+    }
 }

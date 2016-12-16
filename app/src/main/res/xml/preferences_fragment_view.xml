@@ -18,7 +18,7 @@
         <Preference
             android:enabled="true"
             android:key="logout"
-            android:selectable="false"
+            android:selectable="true"
             android:summary="Cerrar la sessión y borrar los datos"
             android:title="Salir" />
 
