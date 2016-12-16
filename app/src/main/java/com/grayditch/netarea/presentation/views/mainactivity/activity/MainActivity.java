@@ -5,6 +5,7 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
 
 import com.grayditch.netarea.R;
 import com.grayditch.netarea.domain.interactor.interfaces.CheckAuthenticatedUseCase;
@@ -26,6 +27,13 @@ public class MainActivity extends AppCompatActivity implements LoginFragment.OnL
         super.onCreate(savedInstanceState);
         App.component(this).inject(this);
         setContentView(R.layout.main_activity);
+
+        // Find the toolbar view inside the activity layout
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        // Sets the Toolbar to act as the ActionBar for this Activity window.
+        // Make sure the toolbar exists in the activity and is not null
+        setSupportActionBar(toolbar);
+
         this.checkAuthenticatedUseCase.execute(new CheckAuthenticatedUseCase.Callback() {
             @Override
             public void isAuthenticated(boolean isAuthenticated) {

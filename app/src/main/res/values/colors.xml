@@ -8,7 +8,7 @@
     <color name="colorAccent">#0e89c4</color>
     <color name="windowBackground">#007bc0</color>
     <color name="navigationBarColor">#0288D1</color>
-    <color name="statusBarColor">#0288D1</color>
+    <color name="statusBarColor">#0288d1</color>
     <color name="textColorPrimary">#fff4f4f4</color>
 
     <color name="white">#FFFFFF</color>
