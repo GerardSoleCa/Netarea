@@ -2,25 +2,25 @@
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
-    <PreferenceCategory android:title="Configuración">
+    <PreferenceCategory android:title="@string/preferences.category.config">
 
         <ListPreference
             android:entries="@array/background_fetch_intervals"
             android:entryValues="@array/background_fetch_intervals"
             android:key="backgroundQualificationsPref"
             android:summary="%s"
-            android:title="Notificaciones de notas" />
+            android:title="@string/preferences.config.mark_notification" />
 
     </PreferenceCategory>
 
-    <PreferenceCategory android:title="Usuario">
+    <PreferenceCategory android:title="@string/preferences.category.user">
 
         <Preference
             android:enabled="true"
             android:key="logout"
             android:selectable="true"
-            android:summary="Cerrar la sessión y borrar los datos"
-            android:title="Salir" />
+            android:summary="@string/preferences.user.summary"
+            android:title="@string/preferences.user.logout" />
 
     </PreferenceCategory>
 
