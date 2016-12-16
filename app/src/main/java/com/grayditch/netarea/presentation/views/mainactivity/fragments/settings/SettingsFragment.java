@@ -8,6 +8,9 @@ import android.support.v7.preference.PreferenceFragmentCompat;
 import android.support.v7.preference.PreferenceManager;
 
 import com.grayditch.netarea.R;
+import com.grayditch.netarea.presentation.views.mainactivity.activity.MainActivity;
+
+import butterknife.OnClick;
 
 /**
  * Created by gerard on 21/04/16.
@@ -20,11 +23,26 @@ public class SettingsFragment extends PreferenceFragmentCompat implements Shared
         return new SettingsFragment();
     }
 
+
     @Override
     public void onCreatePreferences(Bundle bundle, String s) {
         //add xml
+        setPreferenceScreen(null);
         addPreferencesFromResource(R.xml.preferences_fragment_view);
         sharedPreferences = PreferenceManager.getDefaultSharedPreferences(getActivity());
+        addListeners();
+    }
+
+    public void addListeners(){
+        Preference reset = (Preference) findPreference("logout");
+        reset.setOnPreferenceClickListener(new Preference.OnPreferenceClickListener() {
+            @Override
+            public boolean onPreferenceClick(Preference preference) {
+                sharedPreferences.edit().clear().apply();
+                ( (MainActivity)getActivity())
+                return true;
+            }
+        });
     }
 
 
