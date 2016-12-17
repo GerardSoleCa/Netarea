@@ -3,9 +3,11 @@ package com.grayditch.netarea.presentation.internal.di.modules;
 import com.grayditch.netarea.domain.executor.PostExecutionThread;
 import com.grayditch.netarea.domain.executor.ThreadExecutor;
 import com.grayditch.netarea.domain.interactor.CheckAuthenticatedUseCaseImpl;
+import com.grayditch.netarea.domain.interactor.CheckNewQualificationsUseCaseImpl;
 import com.grayditch.netarea.domain.interactor.GetQualificationsUseCaseImpl;
 import com.grayditch.netarea.domain.interactor.LoginUseCaseImpl;
 import com.grayditch.netarea.domain.interactor.interfaces.CheckAuthenticatedUseCase;
+import com.grayditch.netarea.domain.interactor.interfaces.CheckNewQualificationsUseCase;
 import com.grayditch.netarea.domain.interactor.interfaces.GetQualificationsUseCase;
 import com.grayditch.netarea.domain.interactor.interfaces.LoginUseCase;
 import com.grayditch.netarea.domain.repository.QualificationsRepository;
@@ -37,5 +39,13 @@ public class UseCasesModule {
     CheckAuthenticatedUseCase provideCheckAuthenticatedUseCase(UserRepository userRepository, ThreadExecutor threadExecutor,
                                                                PostExecutionThread postExecutionThread) {
         return new CheckAuthenticatedUseCaseImpl(userRepository, threadExecutor, postExecutionThread);
+    }
+
+    @Provides
+    CheckNewQualificationsUseCase provideCheckNewQualificationsUseCase(UserRepository userRepository,
+                                                                       QualificationsRepository qualificationsRepository,
+                                                                       ThreadExecutor threadExecutor,
+                                                                       PostExecutionThread postExecutionThread){
+        return new CheckNewQualificationsUseCaseImpl(userRepository, qualificationsRepository, threadExecutor, postExecutionThread);
     }
 }

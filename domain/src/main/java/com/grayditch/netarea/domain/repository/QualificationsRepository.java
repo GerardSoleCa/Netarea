@@ -14,6 +14,8 @@ public interface QualificationsRepository {
 
     void getQualifications(UserDetails userDetails, Callback callback);
 
+    void getNewQualifications(UserDetails userDetails, Callback callback);
+
     void storeQualifications(List<Subject> subjects, Callback callback);
 
     interface Callback {

@@ -11,7 +11,6 @@ public interface CheckNewQualificationsUseCase extends Interactor {
     void execute(Callback callback);
 
     interface Callback {
-        void onSuccess(List<Subject> subjects);
-        void onError(Throwable e);
+        void newQualifications(List<Subject> subjects);
     }
 }
