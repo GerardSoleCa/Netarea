@@ -1,7 +1,5 @@
 package com.grayditch.netarea.presentation.views.mainactivity.fragments.login;
 
-import android.util.Log;
-
 import com.grayditch.netarea.domain.UserDetails;
 import com.grayditch.netarea.domain.interactor.interfaces.LoginUseCase;
 

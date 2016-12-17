@@ -8,9 +8,6 @@ import com.grayditch.netarea.domain.executor.PostExecutionThread;
 import javax.inject.Inject;
 import javax.inject.Singleton;
 
-import rx.Scheduler;
-import rx.android.schedulers.AndroidSchedulers;
-
 /**
  * Created by gerard on 14/04/16.
  */

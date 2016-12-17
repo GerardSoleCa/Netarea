@@ -7,7 +7,6 @@ import com.grayditch.netarea.data.network.NetareaClient;
 import com.grayditch.netarea.data.network.NetareaPageParser;
 import com.grayditch.netarea.data.network.NetworkUtils;
 import com.grayditch.netarea.data.network.PreferredCipherSuiteSSLSocketFactory;
-import com.grayditch.netarea.domain.repository.QualificationsRepository;
 
 import java.security.KeyManagementException;
 import java.security.KeyStore;

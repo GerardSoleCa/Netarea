@@ -1,7 +1,5 @@
 package com.grayditch.netarea.data.network;
 
-import android.net.ConnectivityManager;
-
 import com.grayditch.netarea.domain.Subject;
 import com.grayditch.netarea.domain.UserDetails;
 

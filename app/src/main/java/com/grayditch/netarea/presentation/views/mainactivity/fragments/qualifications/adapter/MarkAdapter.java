@@ -11,7 +11,6 @@ import android.widget.TextView;
 
 import com.grayditch.netarea.R;
 import com.grayditch.netarea.domain.Mark;
-import com.grayditch.netarea.presentation.App;
 
 import java.util.List;
 

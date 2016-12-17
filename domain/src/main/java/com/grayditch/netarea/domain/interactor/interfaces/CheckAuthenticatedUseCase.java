@@ -1,7 +1,5 @@
 package com.grayditch.netarea.domain.interactor.interfaces;
 
-import com.grayditch.netarea.domain.UserDetails;
-
 /**
  * Created by gerard on 18/04/16.
  */

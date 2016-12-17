@@ -15,11 +15,6 @@
  */
 package com.grayditch.netarea.presentation.internal.di.components;
 
-import com.grayditch.netarea.presentation.receivers.BootReceiver;
-import com.grayditch.netarea.presentation.receivers.ScheduledQualificationsReceiver;
-import com.grayditch.netarea.presentation.views.mainactivity.activity.MainActivity;
-import com.grayditch.netarea.presentation.views.mainactivity.fragments.login.LoginFragment;
-import com.grayditch.netarea.presentation.views.mainactivity.fragments.qualifications.QualificationsFragment;
 import com.grayditch.netarea.presentation.internal.di.modules.AppModule;
 import com.grayditch.netarea.presentation.internal.di.modules.DBModule;
 import com.grayditch.netarea.presentation.internal.di.modules.DependenciesModule;
@@ -27,6 +22,11 @@ import com.grayditch.netarea.presentation.internal.di.modules.NetworkModule;
 import com.grayditch.netarea.presentation.internal.di.modules.PresentersModule;
 import com.grayditch.netarea.presentation.internal.di.modules.RepositoriesModule;
 import com.grayditch.netarea.presentation.internal.di.modules.UseCasesModule;
+import com.grayditch.netarea.presentation.receivers.BootReceiver;
+import com.grayditch.netarea.presentation.receivers.ScheduledQualificationsReceiver;
+import com.grayditch.netarea.presentation.views.mainactivity.activity.MainActivity;
+import com.grayditch.netarea.presentation.views.mainactivity.fragments.login.LoginFragment;
+import com.grayditch.netarea.presentation.views.mainactivity.fragments.qualifications.QualificationsFragment;
 import com.grayditch.netarea.presentation.views.mainactivity.fragments.settings.SettingsFragment;
 
 import javax.inject.Singleton;

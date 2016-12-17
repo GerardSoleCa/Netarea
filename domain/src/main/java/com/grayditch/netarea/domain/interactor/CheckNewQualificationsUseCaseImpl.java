@@ -4,9 +4,7 @@ import com.grayditch.netarea.domain.Subject;
 import com.grayditch.netarea.domain.UserDetails;
 import com.grayditch.netarea.domain.executor.PostExecutionThread;
 import com.grayditch.netarea.domain.executor.ThreadExecutor;
-import com.grayditch.netarea.domain.interactor.interfaces.CheckAuthenticatedUseCase;
 import com.grayditch.netarea.domain.interactor.interfaces.CheckNewQualificationsUseCase;
-import com.grayditch.netarea.domain.interactor.interfaces.GetQualificationsUseCase;
 import com.grayditch.netarea.domain.repository.QualificationsRepository;
 import com.grayditch.netarea.domain.repository.UserRepository;
 

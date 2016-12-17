@@ -5,8 +5,6 @@ import com.grayditch.netarea.domain.UserDetails;
 
 import java.util.List;
 
-import rx.Observable;
-
 /**
  * Created by gerard on 13/04/16.
  */

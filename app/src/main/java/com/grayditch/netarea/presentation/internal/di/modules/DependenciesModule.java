@@ -9,7 +9,6 @@ import android.support.v4.app.NotificationCompat;
 
 import com.grayditch.netarea.R;
 import com.grayditch.netarea.data.executor.JobExecutor;
-import com.grayditch.netarea.domain.UserDetails;
 import com.grayditch.netarea.domain.executor.PostExecutionThread;
 import com.grayditch.netarea.domain.executor.ThreadExecutor;
 import com.grayditch.netarea.presentation.UIThread;
