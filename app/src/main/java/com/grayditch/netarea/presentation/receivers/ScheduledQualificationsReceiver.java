@@ -62,27 +62,28 @@ public class ScheduledQualificationsReceiver extends BroadcastReceiver {
                 .setSmallIcon(R.drawable.ic_flag)
                 .setLargeIcon(BitmapFactory.decodeResource(ctx.getResources(), R.drawable.ic_launcher))
                 .setContentTitle(ctx.getString(R.string.notifications_title))
-//                .setContentText(getNotificationContent(subjects))
                 .setStyle(new NotificationCompat.BigTextStyle()
                         .bigText(getNotificationContent(subjects)))
                 .setSubText(ctx.getString(R.string.notifications_subtitle))
                 .setContentIntent(pendingIntent)
-                .setAutoCancel(true);
+                .setAutoCancel(true)
+                .setOnlyAlertOnce(true)
+                .setDefaults(Notification.DEFAULT_SOUND | Notification.DEFAULT_VIBRATE | Notification.DEFAULT_LIGHTS);
         return notificationBuilder.build();
     }
 
     private <T extends AppCompatActivity> PendingIntent buildPendingIntent(Context ctx, Class<T> clazz) {
-        Intent resultIntent = new Intent(ctx, clazz);
-        TaskStackBuilder stackBuilder = TaskStackBuilder.create(ctx);
-        stackBuilder.addParentStack(clazz);
-        stackBuilder.addNextIntent(resultIntent);
-        PendingIntent resultPendingIntent = stackBuilder.getPendingIntent(0, PendingIntent.FLAG_UPDATE_CURRENT);
+        Intent intent = new Intent(ctx, clazz);
+        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_SINGLE_TOP);
+//        TaskStackBuilder stackBuilder = TaskStackBuilder.create(ctx);
+//        stackBuilder.addParentStack(clazz);
+//        stackBuilder.addNextIntent(resultIntent);
+        PendingIntent resultPendingIntent = PendingIntent.getActivity(ctx, 0, intent, PendingIntent.FLAG_UPDATE_CURRENT);
         return resultPendingIntent;
     }
 
     private void showNotification(Context ctx, Notification notification) {
         NotificationManager mNotificationManager = (NotificationManager) ctx.getSystemService(Context.NOTIFICATION_SERVICE);
-        mNotificationManager.cancel(NOTIFICATION_ID);
         mNotificationManager.notify(NOTIFICATION_ID, notification);
     }
 
