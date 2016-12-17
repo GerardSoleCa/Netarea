@@ -53,7 +53,6 @@ public class LoginFragment extends Fragment implements LoginView {
         if (actionBar != null) {
             actionBar.hide();
         }
-        this.presenter.onCreate(this);
     }
 
     @Nullable
@@ -61,6 +60,7 @@ public class LoginFragment extends Fragment implements LoginView {
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.login_fragment, container, false);
         ButterKnife.bind(this, view);
+        this.presenter.onCreate(this);
         return view;
     }
 

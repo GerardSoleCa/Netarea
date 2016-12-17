@@ -9,6 +9,7 @@ import com.grayditch.netarea.domain.UserDetails;
 import com.grayditch.netarea.domain.repository.QualificationsRepository;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 
@@ -71,6 +72,8 @@ public class QualificationsDataRepository implements QualificationsRepository {
                         @Override
                         public void onSuccess(List<Subject> nwSubjects) {
                             List<Subject> newQualifications = QualificationsDataRepository.this.getDisjunction(nwSubjects, dbSubjects);
+                            newQualifications.add(new Subject("NEW SUBJECT", Arrays.asList(new Mark(true, "Test mark", "2", "9.0"))));
+                            callback.onSuccess(newQualifications);
                         }
 
                         @Override

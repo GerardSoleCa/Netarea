@@ -11,9 +11,13 @@ import android.support.v4.app.NotificationCompat;
 import android.support.v4.app.TaskStackBuilder;
 import android.support.v4.content.PermissionChecker;
 import android.support.v7.app.AppCompatActivity;
+import android.text.Spannable;
+import android.text.SpannableString;
+import android.text.style.StyleSpan;
 import android.util.Log;
 
 import com.grayditch.netarea.R;
+import com.grayditch.netarea.domain.Mark;
 import com.grayditch.netarea.domain.Subject;
 import com.grayditch.netarea.domain.interactor.interfaces.CheckNewQualificationsUseCase;
 import com.grayditch.netarea.presentation.App;
@@ -29,6 +33,7 @@ import javax.inject.Inject;
 public class ScheduledQualificationsReceiver extends BroadcastReceiver {
 
     private static final String TAG = ScheduledQualificationsReceiver.class.getClass().getName();
+    private static final int NOTIFICATION_ID = 4523;
 
     @Inject
     CheckNewQualificationsUseCase checkNewQualificationsUseCase;
@@ -52,9 +57,10 @@ public class ScheduledQualificationsReceiver extends BroadcastReceiver {
         PendingIntent pendingIntent = buildPendingIntent(ctx, MainActivity.class);
         NotificationCompat.Builder notificationBuilder = new NotificationCompat.Builder(ctx);
         notificationBuilder
+                .setCategory(Notification.CATEGORY_MESSAGE)
                 .setSmallIcon(R.drawable.ic_flag)
-                .setContentTitle("My notification")
-                .setContentText("Hello World!")
+                .setContentTitle(ctx.getString(R.string.notifications_title))
+                .setContentText(getNotificationContent(subjects))
                 .setContentIntent(pendingIntent)
                 .setAutoCancel(true);
         return notificationBuilder.build();
@@ -71,6 +77,16 @@ public class ScheduledQualificationsReceiver extends BroadcastReceiver {
 
     private void showNotification(Context ctx, Notification notification) {
         NotificationManager mNotificationManager = (NotificationManager) ctx.getSystemService(Context.NOTIFICATION_SERVICE);
-        mNotificationManager.notify(notification.hashCode(), notification);
+        mNotificationManager.cancel(NOTIFICATION_ID);
+        mNotificationManager.notify(NOTIFICATION_ID, notification);
+    }
+
+    private String getNotificationContent(List<Subject> subjects) {
+        StringBuffer sb = new StringBuffer();
+        for (Subject subject : subjects) {
+            sb.append(subject.getName());
+            sb.append("\n");
+        }
+        return sb.toString();
     }
 }

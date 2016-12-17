@@ -15,6 +15,7 @@
  */
 package com.grayditch.netarea.presentation.internal.di.modules;
 
+import android.app.AlarmManager;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.preference.PreferenceManager;
@@ -46,9 +47,15 @@ public class AppModule {
 
     @Provides
     @Singleton
-    SharedPreferences provideSharedPreferences(Context context){
+    SharedPreferences provideSharedPreferences(Context context) {
 //        return context.getApplicationContext().(SHAREDPREFS, Context.MODE_PRIVATE);
         return PreferenceManager.getDefaultSharedPreferences(context);
+    }
+
+    @Provides
+    @Singleton
+    AlarmManager provideAlarmManager(Context context) {
+        return (AlarmManager) context.getSystemService(Context.ALARM_SERVICE);
     }
 
 }

@@ -11,4 +11,6 @@
     <string name="preferences.category.user">User</string>
     <string name="preferences.user.logout">Logout</string>
     <string name="preferences.user.summary">Terminate user session</string>
+
+    <string name="notifications.title">Netarea - Qualification</string>
 </resources>

@@ -2,7 +2,6 @@ package com.grayditch.netarea.presentation.receivers;
 
 import android.app.AlarmManager;
 import android.app.PendingIntent;
-import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -18,22 +17,28 @@ public class JobScheduler {
 
     private Context context;
     private SharedPreferences sharedPreferences;
+    private AlarmManager alarmManager;
 
-    public JobScheduler(Context context, SharedPreferences sharedPreferences) {
+    public JobScheduler(Context context, SharedPreferences sharedPreferences, AlarmManager alarmManager) {
         this.context = context;
         this.sharedPreferences = sharedPreferences;
+        this.alarmManager = alarmManager;
     }
 
     public void schedule() {
         Log.v(TAG, "JobScheduler -> schedule");
+        this.cancelPreviousAlarms();
         int updateInterval = getUpdateInterval();
         if (updateInterval > 0) {
             PendingIntent pendingIntent = buildIntent();
-            AlarmManager alarmManager = (AlarmManager) context.getSystemService(Context.ALARM_SERVICE);
             alarmManager.setRepeating(AlarmManager.RTC_WAKEUP, (updateInterval * 1000), (updateInterval * 1000), pendingIntent);
         }
     }
 
+    private void cancelPreviousAlarms() {
+        PendingIntent pendingIntent = buildIntent();
+        this.alarmManager.cancel(pendingIntent);
+    }
 
     private PendingIntent buildIntent() {
         Intent schedulingIntent = new Intent(context, ScheduledQualificationsReceiver.class);

@@ -1,5 +1,6 @@
 package com.grayditch.netarea.presentation.internal.di.modules;
 
+import android.app.AlarmManager;
 import android.content.Context;
 import android.content.SharedPreferences;
 
@@ -23,8 +24,8 @@ public class DependenciesModule {
 
     @Provides
     @Singleton
-    JobScheduler provideJobScheduler(Context context, SharedPreferences sharedPreferences){
-        return new JobScheduler(context, sharedPreferences);
+    JobScheduler provideJobScheduler(Context context, SharedPreferences sharedPreferences, AlarmManager alarmManager){
+        return new JobScheduler(context, sharedPreferences, alarmManager);
     }
 
     @Provides

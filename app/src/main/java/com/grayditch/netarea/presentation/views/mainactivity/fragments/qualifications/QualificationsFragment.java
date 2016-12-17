@@ -65,7 +65,6 @@ public class QualificationsFragment extends Fragment implements QualificationsVi
             actionBar.show();
         }
         setHasOptionsMenu(true);
-        this.presenter.onCreate(this);
     }
 
     @Nullable
@@ -74,6 +73,8 @@ public class QualificationsFragment extends Fragment implements QualificationsVi
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.qualifications_fragment, container, false);
         ButterKnife.bind(this, view);
+
+        this.presenter.onCreate(this);
         this.recyclerView.setHasFixedSize(true);
         this.layoutManager = new LinearLayoutManager(getContext());
         this.recyclerView.setLayoutManager(this.layoutManager);
