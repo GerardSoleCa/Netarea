@@ -42,4 +42,9 @@ public class Subject {
     public boolean equals(Object obj) {
         return obj instanceof Subject && this.getName().equals(((Subject) obj).getName());
     }
+
+    @Override
+    public int hashCode() {
+        return this.name.hashCode();
+    }
 }

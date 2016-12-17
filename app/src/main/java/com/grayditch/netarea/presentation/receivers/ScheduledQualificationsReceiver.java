@@ -6,6 +6,7 @@ import android.app.PendingIntent;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.BitmapFactory;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.NotificationCompat;
 import android.support.v4.app.TaskStackBuilder;
@@ -59,8 +60,12 @@ public class ScheduledQualificationsReceiver extends BroadcastReceiver {
         notificationBuilder
                 .setCategory(Notification.CATEGORY_MESSAGE)
                 .setSmallIcon(R.drawable.ic_flag)
+                .setLargeIcon(BitmapFactory.decodeResource(ctx.getResources(), R.drawable.ic_launcher))
                 .setContentTitle(ctx.getString(R.string.notifications_title))
-                .setContentText(getNotificationContent(subjects))
+//                .setContentText(getNotificationContent(subjects))
+                .setStyle(new NotificationCompat.BigTextStyle()
+                        .bigText(getNotificationContent(subjects)))
+                .setSubText(ctx.getString(R.string.notifications_subtitle))
                 .setContentIntent(pendingIntent)
                 .setAutoCancel(true);
         return notificationBuilder.build();

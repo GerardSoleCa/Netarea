@@ -56,4 +56,14 @@ public class Mark {
     public void setMark(String mark) {
         this.mark = mark;
     }
+
+    @Override
+    public boolean equals(Object obj) {
+        return obj instanceof Subject && this.getDescription().equals(((Mark) obj).getDescription());
+    }
+
+    @Override
+    public int hashCode() {
+        return this.description.hashCode();
+    }
 }
