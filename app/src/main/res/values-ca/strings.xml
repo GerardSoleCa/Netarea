@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Netarea</string>
+    <string name="username">Usuari</string>
+    <string name="login">Accedir</string>
+    <string name="notifications.subtitle">Obrir Netarea</string>
+    <string name="notifications.title">Netarea - Qualificacions</string>
+    <string name="password">Contrasenya</string>
+    <string name="preferences.category.config">Configuració</string>
+    <string name="preferences.category.user">Usuari</string>
+    <string name="preferences.config.mark_notification">Configuració</string>
+    <string name="preferences.user.logout">Sortir</string>
+    <string name="preferences.user.summary">Tancar la sessió</string>
+    <string name="save_user">Guardar usuari</string>
+</resources>

@@ -9,3 +9,5 @@
 /captures
 
 **/build/*
+
+fabric.properties

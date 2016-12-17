@@ -1,0 +1,14 @@
+<resources>
+    <string-array name="background_fetch_intervals">
+        <item>No actualitzar</item>
+        <item>1 minut</item>
+        <item>30 minuts</item>
+        <item>1 hora</item>
+        <item>2 hores</item>
+        <item>3 hores</item>
+        <item>4 hores</item>
+        <item>5 hores</item>
+        <item>6 hores</item>
+        <item>1 dia</item>
+    </string-array>
+</resources>

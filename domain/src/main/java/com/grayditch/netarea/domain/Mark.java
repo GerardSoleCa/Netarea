@@ -59,7 +59,7 @@ public class Mark {
 
     @Override
     public boolean equals(Object obj) {
-        return obj instanceof Subject && this.getDescription().equals(((Mark) obj).getDescription());
+        return obj instanceof Mark && this.getDescription().equals(((Mark) obj).getDescription());
     }
 
     @Override

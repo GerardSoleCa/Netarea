@@ -1,15 +1,15 @@
 <resources>
     <string-array name="background_fetch_intervals">
-        <item>No actualizar</item>
-        <item>1 minuto</item>
-        <item>30 minutos</item>
-        <item>1 hora</item>
-        <item>2 horas</item>
-        <item>3 horas</item>
-        <item>4 horas</item>
-        <item>5 horas</item>
-        <item>6 horas</item>
-        <item>1 día</item>
+        <item>Don\'t updater</item>
+        <item>1 minute</item>
+        <item>30 minutes</item>
+        <item>1 hour</item>
+        <item>2 hours</item>
+        <item>3 hours</item>
+        <item>4 hours</item>
+        <item>5 hours</item>
+        <item>6 hours</item>
+        <item>1 day</item>
     </string-array>
 
 
