@@ -6,7 +6,7 @@
 
         <ListPreference
             android:entries="@array/background_fetch_intervals"
-            android:entryValues="@array/background_fetch_intervals"
+            android:entryValues="@array/background_fetch_intervals_values"
             android:key="backgroundQualificationsPref"
             android:summary="%s"
             android:title="@string/preferences.config.mark_notification" />

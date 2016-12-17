@@ -108,8 +108,8 @@ public class QualificationsDataRepository implements QualificationsRepository {
         Collections.sort(s2, subjectComparator);
         List<Subject> subjectsToReturn = new ArrayList<>(s1);
         subjectsToReturn.removeAll(s2);
-        for (int i = 0; i < s1.size(); i++) {
-            for (int j = 0; j < s2.size(); i++) {
+        for (int i = 0; i < s1.size() - 1; i++) {
+            for (int j = 0; j < s2.size() - 1; j++) {
                 if (s1.get(i).getName().equals(s2.get(j).getName())) {
                     List<Mark> newMarks = new ArrayList<>(s1.get(i).getMarks());
                     newMarks.removeAll(s2.get(j).getMarks());

@@ -45,7 +45,7 @@
 
         <receiver
             android:name=".presentation.receivers.ScheduledQualificationsReceiver"
-            android:enabled="false"></receiver>
+            android:enabled="true"></receiver>
     </application>
 
 </manifest>

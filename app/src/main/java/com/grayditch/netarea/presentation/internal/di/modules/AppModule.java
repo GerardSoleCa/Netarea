@@ -17,6 +17,7 @@ package com.grayditch.netarea.presentation.internal.di.modules;
 
 import android.content.Context;
 import android.content.SharedPreferences;
+import android.preference.PreferenceManager;
 
 import com.grayditch.netarea.presentation.App;
 
@@ -46,7 +47,8 @@ public class AppModule {
     @Provides
     @Singleton
     SharedPreferences provideSharedPreferences(Context context){
-        return context.getApplicationContext().getSharedPreferences(SHAREDPREFS, Context.MODE_PRIVATE);
+//        return context.getApplicationContext().(SHAREDPREFS, Context.MODE_PRIVATE);
+        return PreferenceManager.getDefaultSharedPreferences(context);
     }
 
 }

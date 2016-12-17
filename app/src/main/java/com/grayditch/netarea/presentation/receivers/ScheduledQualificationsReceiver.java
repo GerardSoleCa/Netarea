@@ -11,6 +11,7 @@ import android.support.v4.app.NotificationCompat;
 import android.support.v4.app.TaskStackBuilder;
 import android.support.v4.content.PermissionChecker;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 
 import com.grayditch.netarea.R;
 import com.grayditch.netarea.domain.Subject;
@@ -27,12 +28,17 @@ import javax.inject.Inject;
  */
 public class ScheduledQualificationsReceiver extends BroadcastReceiver {
 
+    private static final String TAG = ScheduledQualificationsReceiver.class.getClass().getName();
+
     @Inject
     CheckNewQualificationsUseCase checkNewQualificationsUseCase;
 
     @Override
     public void onReceive(final Context context, Intent intent) {
         App.component(context).inject(this);
+
+        Log.v(TAG, "onReceive");
+
         checkNewQualificationsUseCase.execute(new CheckNewQualificationsUseCase.Callback() {
             @Override
             public void newQualifications(List<Subject> subjects) {
