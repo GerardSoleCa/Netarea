@@ -85,7 +85,8 @@ public class LoginFragment extends Fragment implements LoginView {
 
     @Override
     public void navigateToQualifications() {
-        mListener.onLoginFinished();
+        if (mListener != null)
+            mListener.onLoginFinished();
     }
 
 

@@ -26,6 +26,7 @@
         <activity
             android:name=".presentation.views.mainactivity.activity.MainActivity"
             android:screenOrientation="portrait"
+            android:launchMode="singleInstance"
             android:windowSoftInputMode="adjustPan">
             <!--<intent-filter>-->
             <!--<action android:name="android.intent.action.MAIN" />-->
@@ -46,6 +47,8 @@
         <receiver
             android:name=".presentation.receivers.ScheduledQualificationsReceiver"
             android:enabled="true"></receiver>
+
+        <meta-data android:name="io.fabric.ApiKey" android:value="932a9d92bdd4500b2607aa9d2a54d587c8281920"/>
     </application>
 
 </manifest>

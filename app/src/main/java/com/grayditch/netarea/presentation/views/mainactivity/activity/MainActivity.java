@@ -10,6 +10,7 @@ import android.support.v7.widget.Toolbar;
 import com.grayditch.netarea.R;
 import com.grayditch.netarea.domain.interactor.interfaces.CheckAuthenticatedUseCase;
 import com.grayditch.netarea.presentation.App;
+import com.grayditch.netarea.presentation.receivers.JobScheduler;
 import com.grayditch.netarea.presentation.views.mainactivity.fragments.login.LoginFragment;
 import com.grayditch.netarea.presentation.views.mainactivity.fragments.qualifications.QualificationsFragment;
 import com.grayditch.netarea.presentation.views.mainactivity.fragments.settings.SettingsFragment;
@@ -21,6 +22,9 @@ public class MainActivity extends AppCompatActivity implements LoginFragment.OnL
 
     @Inject
     CheckAuthenticatedUseCase checkAuthenticatedUseCase;
+
+    @Inject
+    JobScheduler jobScheduler;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,6 +42,7 @@ public class MainActivity extends AppCompatActivity implements LoginFragment.OnL
             @Override
             public void isAuthenticated(boolean isAuthenticated) {
                 if (isAuthenticated) {
+                    jobScheduler.scheduleIfNotRunning();
                     MainActivity.this.navigateToFragment(QualificationsFragment.newInstance());
                 } else {
                     MainActivity.this.navigateToFragment(LoginFragment.newInstance());

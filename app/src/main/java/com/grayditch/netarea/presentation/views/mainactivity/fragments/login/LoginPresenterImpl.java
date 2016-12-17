@@ -40,7 +40,6 @@ public class LoginPresenterImpl implements LoginPresenter {
 
     @Override
     public void onDestroy() {
-        this.view = null;
     }
 
     private final LoginUseCase.Callback loginUseCaseCallback = new LoginUseCase.Callback() {
@@ -59,11 +58,9 @@ public class LoginPresenterImpl implements LoginPresenter {
         @Override
         public void onError(Throwable e) {
             // Two onSuccess due to the way that works the storaging for quick catching
-            if (LoginPresenterImpl.this.view != null) {
-                LoginView v = LoginPresenterImpl.this.view.get();
-                if (v != null) {
-                    v.hideProgress();
-                }
+            LoginView v = LoginPresenterImpl.this.view.get();
+            if (v != null) {
+                v.hideProgress();
             }
         }
     };

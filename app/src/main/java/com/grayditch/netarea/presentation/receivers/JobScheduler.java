@@ -14,6 +14,7 @@ import android.util.Log;
 public class JobScheduler {
 
     private static final String TAG = JobScheduler.class.getName();
+    private static final int INTENT_ID = 8928;
 
     private Context context;
     private SharedPreferences sharedPreferences;
@@ -23,6 +24,12 @@ public class JobScheduler {
         this.context = context;
         this.sharedPreferences = sharedPreferences;
         this.alarmManager = alarmManager;
+    }
+
+    public void scheduleIfNotRunning() {
+        if (buildIntentWithFlags(PendingIntent.FLAG_NO_CREATE) == null) {
+            this.schedule();
+        }
     }
 
     public void schedule() {
@@ -41,8 +48,12 @@ public class JobScheduler {
     }
 
     private PendingIntent buildIntent() {
+        return buildIntentWithFlags(0);
+    }
+
+    private PendingIntent buildIntentWithFlags(int flags) {
         Intent schedulingIntent = new Intent(context, ScheduledQualificationsReceiver.class);
-        PendingIntent pendingIntent = PendingIntent.getBroadcast(context, 0, schedulingIntent, 0);
+        PendingIntent pendingIntent = PendingIntent.getBroadcast(context, INTENT_ID, schedulingIntent, flags);
         return pendingIntent;
     }
 

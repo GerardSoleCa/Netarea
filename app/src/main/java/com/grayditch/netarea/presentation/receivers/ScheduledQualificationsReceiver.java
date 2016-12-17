@@ -6,19 +6,10 @@ import android.app.PendingIntent;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
-import android.graphics.BitmapFactory;
-import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.NotificationCompat;
-import android.support.v4.app.TaskStackBuilder;
-import android.support.v4.content.PermissionChecker;
 import android.support.v7.app.AppCompatActivity;
-import android.text.Spannable;
-import android.text.SpannableString;
-import android.text.style.StyleSpan;
 import android.util.Log;
 
-import com.grayditch.netarea.R;
-import com.grayditch.netarea.domain.Mark;
 import com.grayditch.netarea.domain.Subject;
 import com.grayditch.netarea.domain.interactor.interfaces.CheckNewQualificationsUseCase;
 import com.grayditch.netarea.presentation.App;
@@ -39,6 +30,9 @@ public class ScheduledQualificationsReceiver extends BroadcastReceiver {
     @Inject
     CheckNewQualificationsUseCase checkNewQualificationsUseCase;
 
+    @Inject
+    NotificationCompat.Builder notificationBuilder;
+
     @Override
     public void onReceive(final Context context, Intent intent) {
         App.component(context).inject(this);
@@ -56,28 +50,15 @@ public class ScheduledQualificationsReceiver extends BroadcastReceiver {
 
     private Notification buildNotification(Context ctx, List<Subject> subjects) {
         PendingIntent pendingIntent = buildPendingIntent(ctx, MainActivity.class);
-        NotificationCompat.Builder notificationBuilder = new NotificationCompat.Builder(ctx);
         notificationBuilder
-                .setCategory(Notification.CATEGORY_MESSAGE)
-                .setSmallIcon(R.drawable.ic_flag)
-                .setLargeIcon(BitmapFactory.decodeResource(ctx.getResources(), R.drawable.ic_launcher))
-                .setContentTitle(ctx.getString(R.string.notifications_title))
-                .setStyle(new NotificationCompat.BigTextStyle()
-                        .bigText(getNotificationContent(subjects)))
-                .setSubText(ctx.getString(R.string.notifications_subtitle))
-                .setContentIntent(pendingIntent)
-                .setAutoCancel(true)
-                .setOnlyAlertOnce(true)
-                .setDefaults(Notification.DEFAULT_SOUND | Notification.DEFAULT_VIBRATE | Notification.DEFAULT_LIGHTS);
+                .setStyle(new NotificationCompat.BigTextStyle().bigText(getNotificationContent(subjects)))
+                .setContentIntent(pendingIntent);
         return notificationBuilder.build();
     }
 
     private <T extends AppCompatActivity> PendingIntent buildPendingIntent(Context ctx, Class<T> clazz) {
         Intent intent = new Intent(ctx, clazz);
         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_SINGLE_TOP);
-//        TaskStackBuilder stackBuilder = TaskStackBuilder.create(ctx);
-//        stackBuilder.addParentStack(clazz);
-//        stackBuilder.addNextIntent(resultIntent);
         PendingIntent resultPendingIntent = PendingIntent.getActivity(ctx, 0, intent, PendingIntent.FLAG_UPDATE_CURRENT);
         return resultPendingIntent;
     }

@@ -32,7 +32,6 @@ public class QualificationsPresenterImpl implements QualificationsPresenter {
 
     @Override
     public void onDestroy() {
-        this.view = null;
     }
 
     private final GetQualificationsUseCase.Callback getQualificationsUseCaseCallback = new GetQualificationsUseCase.Callback() {

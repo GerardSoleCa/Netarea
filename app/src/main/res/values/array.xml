@@ -1,6 +1,6 @@
 <resources>
     <string-array name="background_fetch_intervals">
-        <item>Don\'t updater</item>
+        <item>Don\'t update</item>
         <item>1 minute</item>
         <item>30 minutes</item>
         <item>1 hour</item>
